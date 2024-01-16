@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34330.188
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PaySlipSystem", "PaySlipSystem\PaySlipSystem.csproj", "{4A497E1F-91B0-494D-BA6A-E9DA7EA24441}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PaymentSlip", "PaymentSlip\PaymentSlip.csproj", "{0D5AD8F5-52A2-49A3-AA27-FC26ABF71A7B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4A497E1F-91B0-494D-BA6A-E9DA7EA24441}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4A497E1F-91B0-494D-BA6A-E9DA7EA24441}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4A497E1F-91B0-494D-BA6A-E9DA7EA24441}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4A497E1F-91B0-494D-BA6A-E9DA7EA24441}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0D5AD8F5-52A2-49A3-AA27-FC26ABF71A7B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0D5AD8F5-52A2-49A3-AA27-FC26ABF71A7B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0D5AD8F5-52A2-49A3-AA27-FC26ABF71A7B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0D5AD8F5-52A2-49A3-AA27-FC26ABF71A7B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7FB36F45-A523-4F4D-AE56-2B62FDB1AF05}
+	EndGlobalSection
+EndGlobal

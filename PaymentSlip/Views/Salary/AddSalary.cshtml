@@ -1,0 +1,336 @@
+﻿@model PaymentSlip.Models.SalaryModel
+@using PaymentSlip.Models
+
+@{
+    ViewBag.Title = "";
+}
+
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+
+
+@using (Html.BeginForm("AddSalary", "Salary", FormMethod.Post , new { id = "SalaryForm" }))
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    <h4> Salary Details</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    <div class="form-group">
+        <table class="table">
+            <tr>
+                <td>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.EmpId, htmlAttributes: new { @class = "control-label" })
+                        @Html.EditorFor(model => model.EmpId, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                        @Html.ValidationMessageFor(model => model.EmpName, "", new { @class = "text-danger" })
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.EmpName, htmlAttributes: new { @class = "control-label" })
+                        @Html.EditorFor(model => model.EmpName, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                        @Html.ValidationMessageFor(model => model.EmpName, "", new { @class = "text-danger" })
+                    </div>
+                </td>
+                <td>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.BankName, htmlAttributes: new { @class = "control-label" })
+                        @Html.EditorFor(model => model.BankName, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.BankName, "", new { @class = "text-danger" })
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Bank_accountNumber, htmlAttributes: new { @class = "control-label" })
+                        @Html.EditorFor(model => model.Bank_accountNumber, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Bank_accountNumber, "", new { @class = "text-danger" })
+                    </div>
+                </td>
+                <td>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.PAN_number, htmlAttributes: new { @class = "control-label" })
+                        @Html.EditorFor(model => model.PAN_number, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.PAN_number, "", new { @class = "text-danger" })
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.PF_accountNumber, htmlAttributes: new { @class = "control-label" })
+                        @Html.EditorFor(model => model.PF_accountNumber, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.PF_accountNumber, "", new { @class = "text-danger" })
+                    </div>
+                </td>
+                <td>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.BaseSalary, htmlAttributes: new { @class = "control-label" })
+                        @Html.EditorFor(model => model.BaseSalary, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.BaseSalary, "", new { @class = "text-danger" })
+                    </div>
+                </td>
+            </tr>
+        </table>
+
+    </div>
+    @*<div class="form-group">
+
+                @Html.LabelFor(model => model.EmpName, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.EmpName, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.EmpName, "", new { @class = "text-danger" })
+                </div>
+
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.BankName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.BankName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.BankName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Bank_accountNumber, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Bank_accountNumber, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Bank_accountNumber, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.PAN_number, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.PAN_number, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.PAN_number, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.PF_accountNumber, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.PF_accountNumber, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.PF_accountNumber, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.BaseSalary, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.BaseSalary, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.BaseSalary, "", new { @class = "text-danger" })
+            </div>
+        </div>*@
+
+    <div class="form-group">
+        <h6>Allowances</h6>
+        <div class="allowances-fields">
+            <div class="allowances-field">
+                @Html.Partial("AllowanceField", new AllowanceModel())
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <button type="button" id="addAllowance" class="btn btn-primary mt-2">Add</button>
+    </div>
+    <div class="form-group">
+        <h6>Deductions</h6>
+        <div class="deductions-fields">
+            <div class="deduction-field">
+                @Html.Partial("DeductionField", new DeductionModel())
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <button type="button" id="addDeduction" class="btn btn-primary mt-2">Add</button>
+    </div>
+    @Html.Hidden("CombinedDataJson", "")
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Create" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+}
+<script>
+    $(document).ready(function () {
+        // Set the dropdown value to null
+        $(".allowanceType").val(null);
+        $(".allowanceAmount").val(null);
+        $(".deductionType").val(null);
+        $(".deductionAmount").val(null);
+    });
+    $("#addAllowance").on("click", function () {
+        var $lastRow = $(".allowances-table .allowancesRow:last");
+
+        // Clone the last row
+        var $newRow = $lastRow.clone();
+
+        // Set values to null for the new row
+        $newRow.find('.allowanceType').val(null);
+        $newRow.find('.allowanceAmount').val(null);
+
+        // Append the new row to the table
+        $(".allowances-table").append($newRow);
+
+        // Enable the remove button for all rows
+        $(".removeAllowance").prop("disabled", false);
+    });
+    $(".allowances-table").on("click", ".removeAllowance", function () {
+        var rowCount = $(".allowances-table tr").length;
+
+        if (rowCount > 1) {
+            $(this).closest("tr").remove();
+        } else {
+            alert("At least one row must remain.");
+        }
+    });
+    $(".removeAllowance:first").prop("disabled", true);
+    function collectAllowances() {
+        var allowances = [];
+
+        $(".allowances-table").find(".allowancesRow").each(function () {
+            var allowance = {
+                AllowanceType: $(this).find(".allowanceType").val(),
+                AllowanceAmount: $(this).find(".allowanceAmount").val(),
+            };
+            allowances.push(allowance);
+        });
+        allowances.forEach(function (item, index) {
+            console.log("allowance " + (index + 1) + ":", item);
+        });
+        $("#AllowancesJson").val(JSON.stringify(allowances));
+    }
+
+    $("#addDeduction").on("click", function () {
+        var $lastRow = $(".deductions-table .deductionsRow:last");
+
+        // Clone the last row
+        var $newRow = $lastRow.clone();
+
+        // Set values to null for the new row
+        $newRow.find('.deductionType').val(null);
+        $newRow.find('.deductionAmount').val(null);
+
+        // Append the new row to the table
+        $(".deductions-table").append($newRow);
+
+        // Enable the remove button for all rows
+        $(".removeDeduction").prop("disabled", false);
+    });
+
+    // Remove Deduction button click event
+    $(".deductions-table").on("click", ".removeDeduction", function () {
+        var rowCount = $(".deductions-table .deductionsRow").length;
+
+        if (rowCount > 1) {
+            $(this).closest(".deductionsRow").remove();
+        } else {
+            alert("At least one row must remain.");
+        }
+    });
+
+    // Disable remove button for the initial row
+    $(".removeDeduction:first").prop("disabled", true);
+
+    function collectDeductions() {
+        var deductions = [];
+
+        $(".deductions-table").find(".deductionsRow").each(function () {
+            var deduction = {
+                DeductionType: $(this).find(".deductionType").val(),
+                DeductionAmount: $(this).find(".deductionAmount").val(),
+            };
+            deductions.push(deduction);
+        });
+        deductions.forEach(function (item, index) {
+            console.log("Deduction " + (index + 1) + ":", item);
+        });
+        $("#DeductionsJson").val(JSON.stringify(deductions));
+        var deductionsJson = $("#DeductionsJson").val();
+
+        // Log the value to the console
+        console.log("DeductionsJson Value:", deductionsJson);
+    }
+    $("#SalaryForm").submit(function () {
+        collectDeductions();
+        collectAllowances();       
+        // Combine allowances and deductions into a single object
+        var combinedData = $("#DeductionsJson").val() + " + " + $("#AllowancesJson").val(); 
+        console.log(combinedData);
+        // Convert the combined data to a JSON string
+        var jsonData = JSON.stringify(combinedData);
+
+        // Set the JSON string to the hidden field
+        $("#CombinedDataJson").val(jsonData);
+    });
+
+</script>
+
+    @*<script>
+        $(document).ready(function () {
+            // Set the dropdown value to null
+            $(".deductionType").val(null);
+            $(".deductionAmount").val(null);
+        });
+            // Add Deduction button click event
+            $("#addDeduction").on("click", function () {
+                var $lastRow = $(".deductions-table .deductionsRow:last");
+
+                // Clone the last row
+                var $newRow = $lastRow.clone();
+
+                // Set values to null for the new row
+                $newRow.find('.deductionType').val(null);
+                $newRow.find('.deductionAmount').val(null);
+
+                // Append the new row to the table
+                $(".deductions-table").append($newRow);
+
+                // Enable the remove button for all rows
+                $(".removeDeduction").prop("disabled", false);
+            });
+
+        // Remove Deduction button click event
+        $(".deductions-table").on("click", ".removeDeduction", function () {
+            var rowCount = $(".deductions-table .deductionsRow").length;
+
+            if (rowCount > 1) {
+            $(this).closest(".deductionsRow").remove();
+            } else {
+            alert("At least one row must remain.");
+            }
+        });
+
+        // Disable remove button for the initial row
+        $(".removeDeduction:first").prop("disabled", true);
+
+        function collectDeductions() {
+            var deductions = [];
+
+            $("deductions-table").find(".deductionsRow").each(function () {
+                var deduction = {
+                    DeductionType: $(this).find(".deductionType").val(),
+                    DeductionAmount: $(this).find(".deductionAmount").val(),
+                };
+                deductions.push(deduction);
+            });
+            $("#DeductionsJson").val(JSON.stringify(deductions));
+        }
+
+       
+
+   
+</script>*@
+

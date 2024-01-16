@@ -1,0 +1,42 @@
+﻿@model PaymentSlip.Models.AllowanceModel
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+   
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+<div class="allowances">
+
+    <table class="allowances-table">
+        <tr class="allowancesRow">
+            <td>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.AllowanceType, htmlAttributes: new { @class = "control-label" })
+                    <div>
+                        @Html.EnumDropDownListFor(model => model.AllowanceType, htmlAttributes: new { @class = "allowanceType form-control" })
+                        @Html.ValidationMessageFor(model => model.AllowanceType, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </td>
+            <td>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.AllowanceAmount, htmlAttributes: new { @class = "control-label" })
+                    <div>
+                        @Html.EditorFor(model => model.AllowanceAmount, new { htmlAttributes = new { @class = "allowanceAmount form-control" } })
+                        @Html.ValidationMessageFor(model => model.AllowanceAmount, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </td>
+            <td>
+                <button type="button" class="removeAllowance btn btn-danger mt-4">Remove</button>
+            </td>
+
+        </tr>
+    </table> 
+</div>
+    @Html.Hidden("AllowancesJson", "")
+</div>
+}
+

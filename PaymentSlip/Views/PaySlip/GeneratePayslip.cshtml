@@ -1,0 +1,135 @@
+﻿@model PaymentSlip.Models.PaySlipViewModel
+@using PaymentSlip.Models
+
+@{
+    ViewBag.Title = "GeneratePayslip";
+}
+<style>
+    .deductionTable{
+        width:350px;
+        ali
+    }
+    .allowanceTable {
+        width: 350px;
+    }
+</style>
+
+<h2>GeneratePayslip</h2>
+<div class="col-md-12">
+    <table class="table-borderless  col-md-12">
+        <!-- Employee Information -->
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.EmployeeId)</th>
+            <td>@Html.DisplayFor(model => model.EmployeeId)</td>
+            <th>@Html.DisplayNameFor(model => model.BankName)</th>
+            <td>@Html.DisplayFor(model => model.BankName)</td>
+        </tr>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.Name)</th>
+            <td>@Html.DisplayFor(model => model.Name)</td>
+            <th>@Html.DisplayNameFor(model => model.AccountNumber)</th>
+            <td>@Html.DisplayFor(model => model.AccountNumber)</td>
+        </tr>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.Department)</th>
+            <td>@Html.DisplayFor(model => model.Department)</td>
+            <th>@Html.DisplayNameFor(model => model.PFNumber)</th>
+            <td>@Html.DisplayFor(model => model.PFNumber)</td>
+        </tr>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.EmployeeRole)</th>
+            <td>@Html.DisplayFor(model => model.EmployeeRole)</td>
+            <th>@Html.DisplayNameFor(model => model.PanCardNumber)</th>
+            <td>@Html.DisplayFor(model => model.PanCardNumber)</td>
+        </tr>
+    </table>
+</div>
+<br />
+
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-6">
+            <table class="table table-bordered ">
+
+                <tr>
+                    <th >Earnings</th>
+                    <td > </td>
+                </tr>
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.BaseSalary)</th>
+                    <td>@Html.DisplayFor(model => model.BaseSalary)</td>
+                </tr>
+                @foreach (var allowance in Model.Allowances)
+                {
+                    <tr>
+                        <td >@Enum.GetName(typeof(AllowanceTypes), allowance.AllowanceType)</td>
+                        <td>@Html.DisplayFor(model => allowance.AllowanceAmount)</td>
+
+                    </tr>
+                }
+            </table>
+        </div>
+        <div class="col-md-6">
+            <table class="table table-bordered  ">
+                <tr>
+                    <th>Deductions</th>
+                    <td > </td>
+                </tr>
+                @foreach (var deduction in Model.Deductions)
+                {
+                    <tr>
+                        <td >@Enum.GetName(typeof(DeductionTypes), deduction.DeductionType)</td>
+                        <td>@Html.DisplayFor(model => deduction.DeductionAmount)</td>
+                    </tr>
+                }
+            </table>
+        </div>
+
+
+
+        @*<div class="col-md-12">
+        <table class="table-bordered  col-md-12">
+            <tr>
+                <th>Earnings</th>
+                <td>Gross Earnings</td>
+                <th>Deductions</th>
+                <td>Total Deductions</td>
+            </tr>
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.BaseSalary)</th>
+                <td>@Html.DisplayFor(model => model.BaseSalary)</td>
+            </tr>
+
+                    @foreach (var allowance in Model.Allowances)
+                    {
+                <tr>
+                    <th>@Enum.GetName(typeof(AllowanceTypes), allowance.AllowanceType)</th>
+                    <td>@Html.DisplayFor(model => allowance.AllowanceAmount)</td>
+                </tr>
+            }
+
+
+                        @foreach (var deduction in Model.Deductions)
+                        {
+                        <tr>
+                            <th>@Enum.GetName(typeof(DeductionTypes), deduction.DeductionType)</th>
+                            <td>@Html.DisplayFor(model => deduction.DeductionAmount)</td>
+                        </tr>
+                    }
+
+
+                    </table>*@
+        <table class="table table table-bordered col-sm-5">
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.NetEarnings)</th>
+                <td>@Html.DisplayFor(model => model.NetEarnings)</td>
+            </tr>
+        </table>
+
+
+    </div>
+
+    </div>
+
+

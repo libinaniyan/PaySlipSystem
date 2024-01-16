@@ -1,0 +1,141 @@
+﻿@*@model PaymentSlip.Models.PaySlipViewModel
+
+    @{
+        ViewBag.Title = "GetPayslip";
+    }
+
+    <style>
+        .form-box {
+            width: 50%; /* Adjust the width as needed */
+            margin: auto;
+            margin-top: 50px; /* Adjust the top margin as needed */
+        }
+
+        .table-container {
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        /* Add more styles as needed */
+    </style>
+
+    <div class="form-box">
+        <h2>GetPayslip</h2>
+    @using (Html.BeginForm("GetPayslip", "PaySlip", FormMethod.Post, new { @class = "form-box" }))
+
+        {
+            @Html.AntiForgeryToken()
+     <h2>Magic Technology Pvt Ltd</h2>
+            <div class="table-container">
+                <table class="table">
+                    <tbody>
+                        <tr>
+                            <td>
+                                <label for="EmployeeId">Employee ID:</label>
+                            </td>
+                            <td>
+
+                                @Html.EditorFor(model => model.EmployeeId, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.EmployeeId, "", new { @class = "text-danger" })
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Create" class="btn btn-danger" />
+                </div>
+            </div>
+        }
+    </div>*@
+
+
+@model PaymentSlip.Models.PaySlipViewModel
+
+        @{
+            ViewBag.Title = "GetPayslip";
+        }
+    <style>
+        .form-box {
+            border: 1px solid black;
+            padding: 20px;
+            border-radius: 8px;
+            width: 600px;
+            margin: auto;
+            margin-top: 100px;
+        }
+
+        label {
+            color: #2415db;
+        }
+
+        h2 {
+            text-align: center;
+            color: orange;
+        }
+
+        .table {
+            align-self: center;
+            width: 100%;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .btn-danger:hover {
+            background-color: #3498db;
+            border-color: #3498db;
+            color: #ffffff;
+        }
+
+        .registerLink {
+            margin-left: 300px;
+        }
+    </style>
+
+    <hr />
+
+    <div class="row">
+        <div class="col-md-12">
+            <form asp-action="GetPayslip" class="form-box" method="post">
+                <h2>Magic Technology Pvt Ltd</h2>
+                <table class="table">
+                    <tbody>
+                        <tr>
+                            <td colspan="2">
+                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="form-group  align-content-center">
+                                    <label asp-for="EmployeeId" class="control-label">Enter the Employee ID number</label>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-group">
+
+                                    @Html.EditorFor(model => model.EmployeeId, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.EmployeeId, "", new { @class = "text-danger" })
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" class="text-center">
+                                <div class="form-group">
+                                    <input type="submit" value="Generate Pay Slip" class="btn btn-danger" />
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <a class="registerLink" href="@Url.Action("AddEmployees", "Employee")">Register new Employees</a>
+            </form>
+    </div>
+</div>
